@@ -1,22 +1,17 @@
 import MovieCard from "./MovieCard";
 
-const MovieList = ({ movies, searchTitle, searchRating }) => {
-  return (
-    <div className="movie-list">
-      {movies
-        .filter((movie) => {
-          if (searchRating === 0) return true;
-          // Créer un intervalle de ±0.3 autour du rating sélectionné
-          const minRating = searchRating - 0.3;
-          const maxRating = searchRating + 0.3;
-          return movie.rating >= minRating && movie.rating <= maxRating;
+const MovieList = ({movies, searchTitle, searchRating}) => {
+    return (
+        <div style={{display: 'flex', flexWrap:'wrap', justifyContent: "space-around"}}>
+        {movies
+        .filter((el)=> {
+            if (searchRating === 0) return true;
+            return Math.floor(el.rating) === Math.floor(searchRating);
         })
-        .filter((movie) => movie.title.toLowerCase().includes(searchTitle))
-        .map((movie, index) => (
-          <MovieCard {...movie} key={index} />
-        ))}
-    </div>
-  );
-};
+        .filter((el)=> el.title.toLowerCase().includes(searchTitle))
+        .map((el, index)=> <MovieCard {...el} key={index}/>)}
+        </div>
+    )
+}
 
 export default MovieList;

@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="title"> My Movie Application</h1>
+      <h1 className="title"> Movie Flow</h1>
       <div className="filter-container">
         <Filter setSearchTitle={setSearchTitle} setSearchRating={setSearchRating} />
       </div>
