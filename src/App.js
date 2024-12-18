@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import moviesData from "./moviesData";
 import AddMovie from "./Componants/AddMovie";
 import Filter from "./Componants/Filter";
 import MovieList from "./Componants/MovieList";
+import MovieDetail from "./Componants/MovieDetail";
 
 function App() {
   const [movies, setMovies] = useState(moviesData);
@@ -12,22 +14,42 @@ function App() {
   const [searchRating, setSearchRating] = useState(0);
 
   const addMovie = (newMovie) => {
-    setMovies([...movies, newMovie]);
+    const movieWithId = {
+      ...newMovie,
+      id: movies.length + 1
+    };
+    setMovies([...movies, movieWithId]);
   };
 
   return (
-    <div className="App">
-      <h1 className="title"> Movie Flow</h1>
-      <div className="filter-container">
-        <Filter setSearchTitle={setSearchTitle} setSearchRating={setSearchRating} />
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <h1 className="title">Movie Flow</h1>
+                <div className="filter-container">
+                  <Filter
+                    setSearchTitle={setSearchTitle}
+                    setSearchRating={setSearchRating}
+                    searchRating={searchRating}
+                  />
+                  <AddMovie addMovie={addMovie} />
+                </div>
+                <MovieList
+                  movies={movies}
+                  searchTitle={searchTitle.toLowerCase()}
+                  searchRating={searchRating}
+                />
+              </>
+            }
+          />
+          <Route path="/movie/:id" element={<MovieDetail />} />
+        </Routes>
       </div>
-      <AddMovie addMovie={addMovie} />
-      <MovieList
-        movies={movies}
-        searchTitle={searchTitle.toLowerCase()}
-        searchRating={searchRating}
-      />
-    </div>
+    </Router>
   );
 }
 

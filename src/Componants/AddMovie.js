@@ -14,17 +14,25 @@ const AddMovie = ({ addMovie }) => {
   const [description, setDescription] = useState("");
   const [posterURL, setPosterUrl] = useState("");
   const [rating, setRating] = useState(0);
+  const [trailerURL, setTrailerURL] = useState("");
 
   const toggleModal = () => setIsOpen(!modalIsOpen);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newMovie = { title, description, posterURL, rating };
+    const newMovie = { 
+      title, 
+      description, 
+      posterURL, 
+      rating,
+      trailerURL 
+    };
     addMovie(newMovie);
     toggleModal();
     setTitle("");
     setDescription("");
     setPosterUrl("");
+    setTrailerURL("");
     setRating(0);
   };
 
@@ -86,6 +94,19 @@ const AddMovie = ({ addMovie }) => {
               />
             </Form.Group>
           </Row>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Trailer URL</Form.Label>
+            <Form.Control
+              type="text"
+              value={trailerURL}
+              onChange={(e) => setTrailerURL(e.target.value)}
+              placeholder="Enter YouTube embed URL (e.g., https://www.youtube.com/embed/xxx)"
+            />
+            <Form.Text className="text-muted">
+              Use YouTube embed URL format
+            </Form.Text>
+          </Form.Group>
 
           <Row className="mb-3">
             <Form.Group as={Col}>

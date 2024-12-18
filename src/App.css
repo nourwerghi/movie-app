@@ -686,6 +686,7 @@ body::before {
   display: block;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-weight: 600;
 }
 
 .form-control {
@@ -1005,4 +1006,86 @@ body::before {
 
 .title:hover::before {
   animation: borderFade 1.5s ease infinite;
+}
+
+/* Movie Detail Page Styles */
+.movie-detail {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.movie-detail-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.movie-detail h1 {
+  color: #ec1d1d;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.movie-detail .movie-poster {
+  max-width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.movie-description {
+  max-width: 800px;
+  text-align: center;
+  line-height: 1.6;
+  color: #faf2f2;
+}
+
+.movie-rating {
+  font-size: 1.2em;
+  color: #f5c518;
+  font-weight: bold;
+}
+
+.movie-trailer {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.movie-trailer iframe {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0c31d8;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+  color: white;
+  text-decoration: none;
+}
+
+.movie-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.movie-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+.movie-trailer h2 {
+  color: #e50914;
 }
